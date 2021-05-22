@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cobrinha</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+</head>
+
+<body>
+    <H1>A COBRINHA</H1>
+    <section class="warapp">
+        <div class="jogo">
+            <div class="perdeu"></div>
+            <div class="score">Pontos: <div id="pontos"></div>
+            </div>
+            <canvas id="cobrinha" width="512" height="512"></canvas>
+        </div>
+    </section>
+    <section class="container">
+        <div class="botoes">
+            <input class="botao" id="cima" type="button" value="C" onclick="botaoCima()" />
+            <div class="horizontal">
+                <input class="botao" id="esquerda" type="button" value="B" onclick="botaoEsquerda()" />
+                <div class="divid"></div>
+                <input class="botao" id="direita" type="button" value="A" onclick="botaoDireita()" />
+            </div>
+            <input class="botao" id="baixo" type="button" value="D" onclick="botaoBaixo()" />
+        </div>
+    </section>
+</body>
+
+</html>

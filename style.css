@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Press+Start+2P&display=swap');
+@font-face {
+    font-family: "Arrows";
+    src: url('assets/Arrows.ttf');
+}
+
+body {
+    height: 95vh;
+    width: 95vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(6, 26, 0);
+}
+
+H1 {
+    font-family: 'Gloria Hallelujah', cursive;
+    color: rgb(121, 255, 121);
+}
+
+.perdeu {
+    color: rgb(17, 0, 32);
+    font-weight: bold;
+    font-size: 60px;
+    position: fixed;
+    margin-top: 50px;
+    display: none;
+    flex-direction: column;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.warapp {
+    text-align: center;
+}
+
+.calculoF {
+    font-size: 30px;
+    text-align: center;
+}
+
+.score {
+    display: flex;
+    position: fixed;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.container {
+    display: none;
+    position: fixed;
+    margin-top: 80vh;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.horizontal{
+    display: flex;
+    flex-direction: row;
+}
+.botao {
+    background-color: rgb(255, 255, 4);
+    border: 5px solid #000;
+    height: 50px;
+    width: 80px;
+    font-size: 40px;
+    font-family: 'Arrows';
+}
+.divid{
+    width: 80px;
+}
+
+@media (max-width: 1000px) {
+    body {
+        height: 90vh;
+        width: auto;
+    }
+    H1{
+        position: fixed;
+        z-index: 100;
+        top: 10px;
+    }
+    .warapp {
+        transform: scale(0.5);
+        position: fixed;
+    }
+    .container {
+        display: block;
+    }
+}
