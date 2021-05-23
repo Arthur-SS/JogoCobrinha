@@ -11,15 +11,16 @@ let comida = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box,
 }
-let fome = {
+var fome = { x: -2, y: -2 }
+/* let fome = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box,
-};
+} */
 
 let score = document.getElementById("pontos");
-var ponto = 1
-score.innerHTML = ponto
-let disparaFome = 110;
+var ponto = 0;
+score.innerHTML = ponto;
+let disparaFome = 100;
 
 
 function criarBG() {
@@ -72,13 +73,6 @@ function desenharComida() {
     context.fillStyle = "orange";
     context.fillRect(comida.x, comida.y, box, box)
 }
-function desenharFome() {
-    context.fillStyle = "black";
-    context.fillRect(fome.x, fome.y, box, box)
-    context.strokeStyle = "#CCCCCC";
-    context.lineWidth = 3;
-    context.strokeRect(fome.x, fome.y, box, box)
-}
 
 function calcularPontos() {
     ponto = ponto + 10
@@ -88,7 +82,13 @@ function pontoCai() {
     ponto = ponto - 10
     score.innerHTML = ponto
 }
-
+function desenharFome() {
+    context.fillStyle = "black";
+    context.fillRect(fome.x, fome.y, box, box)
+    context.strokeStyle = "#CCCCCC";
+    context.lineWidth = 3;
+    context.strokeRect(fome.x, fome.y, box, box)
+}
 
 function iniciarJogo() {
 
@@ -125,11 +125,19 @@ function iniciarJogo() {
         calcularPontos();
     };
 
-    if (ponto >= disparaFome) {
-        desenharFome()
-        
-    }
 
+    switch (ponto) {
+        case disparaFome:
+            fome.x = 7 * box;
+            fome.y = 7 * box;
+            break;
+        default:
+            break;
+    };
+
+    if (ponto >= disparaFome) {
+        desenharFome();
+    }
     if (snakeX != fome.x || snakeY != fome.y) {
 
     } else {
@@ -147,7 +155,31 @@ function iniciarJogo() {
 
     snake.unshift(nCabeca)
 
-}
-let jogo = setInterval(iniciarJogo, 120);
+    /* Controle de velocidade */
+    if (snake.length == 4) {
+        clearInterval(jogo);
+        jogo = setInterval(iniciarJogo, 185)
+    } if (snake.length == 8) {
+        clearInterval(jogo);
+        jogo = setInterval(iniciarJogo, 170)
+    } if (snake.length == 10) {
+        clearInterval(jogo);
+        jogo = setInterval(iniciarJogo, 160)
+    } if (snake.length == 15) {
+        clearInterval(jogo);
+        jogo = setInterval(iniciarJogo, 140)
+    } if (snake.length == 25) {
+        clearInterval(jogo);
+        jogo = setInterval(iniciarJogo, 110)
+    } if (snake.length == 30) {
+        clearInterval(jogo);
+        jogo = setInterval(iniciarJogo, 100)
+    };
+
+};
+
+
+var jogo = setInterval(iniciarJogo, 200);
+jogo;
 
 
