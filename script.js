@@ -27,6 +27,14 @@ function criarCobrinha() {
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
 };
+function loop() {
+    if (snake[0].x >= 16 * box) snake[0].x = 0;
+    if (snake[0].x <= -1 ) snake[0].x = 16 * box;
+    if (snake[0].y >= 16 * box ) snake[0].y = 0;
+    if (snake[0].y <= -1 ) snake[0].y = 16 * box;
+}
+
+
 document.addEventListener('keyup', setas)/* Adiciona o movimento ao personagem */
 
 function setas(event) {
@@ -53,12 +61,6 @@ function botaoEsquerda(){
     if (esquerda == esquerda && direcao != "direita") direcao = "esquerda";
 }
 
-function loop() {
-    if (snake[0].x > 16 * box && direcao == "direita") snake[0].x = 0;
-    if (snake[0].x < 0 && direcao == "esquerda") snake[0].x = 16 * box;
-    if (snake[0].y > 16 * box && direcao == "baixo") snake[0].y = 0;
-    if (snake[0].y < 0 && direcao == "cima") snake[0].y = 16 * box;
-}
 
 function desenharComida() {
     context.fillStyle = "orange";
@@ -83,9 +85,8 @@ function iniciarJogo() {
             clearInterval(jogo)
         }
     };
-
-    criarBG();
     loop();
+    criarBG();
     criarCobrinha();
     desenharComida();
 
@@ -115,6 +116,6 @@ function iniciarJogo() {
     snake.unshift(nCabeca)
 
 }
-let jogo = setInterval(iniciarJogo, 150);
+let jogo = setInterval(iniciarJogo, 75);
 
 
