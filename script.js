@@ -11,9 +11,15 @@ let comida = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box,
 }
+let fome = {
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box,
+};
+
 let score = document.getElementById("pontos");
-let ponto = 0
+var ponto = 1
 score.innerHTML = ponto
+let disparaFome = 110;
 
 
 function criarBG() {
@@ -29,9 +35,9 @@ function criarCobrinha() {
 };
 function loop() {
     if (snake[0].x >= 16 * box) snake[0].x = 0;
-    if (snake[0].x <= -1 ) snake[0].x = 16 * box;
-    if (snake[0].y >= 16 * box ) snake[0].y = 0;
-    if (snake[0].y <= -1 ) snake[0].y = 16 * box;
+    if (snake[0].x <= -1) snake[0].x = 16 * box;
+    if (snake[0].y >= 16 * box) snake[0].y = 0;
+    if (snake[0].y <= -1) snake[0].y = 16 * box;
 }
 
 
@@ -48,16 +54,16 @@ function setas(event) {
     if (event.keyCode == cima && direcao != "baixo") direcao = "cima";
     if (event.keyCode == baixo && direcao != "cima") direcao = "baixo";
 }
-function botaoCima(){
+function botaoCima() {
     if (cima == cima && direcao != "baixo") direcao = "cima";
 }
-function botaoBaixo(){
+function botaoBaixo() {
     if (baixo == baixo && direcao != "cima") direcao = "baixo";
 }
-function botaoDireita(){
+function botaoDireita() {
     if (direita == direita && direcao != "esquerda") direcao = "direita";
 }
-function botaoEsquerda(){
+function botaoEsquerda() {
     if (esquerda == esquerda && direcao != "direita") direcao = "esquerda";
 }
 
@@ -66,9 +72,20 @@ function desenharComida() {
     context.fillStyle = "orange";
     context.fillRect(comida.x, comida.y, box, box)
 }
+function desenharFome() {
+    context.fillStyle = "black";
+    context.fillRect(fome.x, fome.y, box, box)
+    context.strokeStyle = "#CCCCCC";
+    context.lineWidth = 3;
+    context.strokeRect(fome.x, fome.y, box, box)
+}
+
 function calcularPontos() {
     ponto = ponto + 10
-
+    score.innerHTML = ponto
+}
+function pontoCai() {
+    ponto = ponto - 10
     score.innerHTML = ponto
 }
 
@@ -80,7 +97,7 @@ function iniciarJogo() {
             var perdeu = document.querySelector(".perdeu");
             perdeu.style.display = "flex";
             let textHTML = ""
-            textHTML += `!Você Perdeu! <div class="calculoF">seus pontos: ${ponto}</div>` 
+            textHTML += `!Você Perdeu! <div class="calculoF">seus pontos: ${ponto}</div>`
             perdeu.innerHTML = textHTML
             clearInterval(jogo)
         }
@@ -100,13 +117,28 @@ function iniciarJogo() {
 
     if (snakeX != comida.x || snakeY != comida.y) {
         snake.pop();
-        
+
     } else {
         comida.x = Math.floor(Math.random() * 15 + 1) * box;
         comida.y = Math.floor(Math.random() * 15 + 1) * box;
-        
+
         calcularPontos();
+    };
+
+    if (ponto >= disparaFome) {
+        desenharFome()
+        
     }
+
+    if (snakeX != fome.x || snakeY != fome.y) {
+
+    } else {
+        snake.length = snake.length - 1;
+        fome.x = Math.floor(Math.random() * 15 + 1) * box;
+        fome.y = Math.floor(Math.random() * 15 + 1) * box;
+        pontoCai();
+    };
+
 
     var nCabeca = {
         x: snakeX,
@@ -116,6 +148,6 @@ function iniciarJogo() {
     snake.unshift(nCabeca)
 
 }
-let jogo = setInterval(iniciarJogo, 95);
+let jogo = setInterval(iniciarJogo, 120);
 
 
