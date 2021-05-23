@@ -116,6 +116,6 @@ function iniciarJogo() {
     snake.unshift(nCabeca)
 
 }
-let jogo = setInterval(iniciarJogo, 75);
+let jogo = setInterval(iniciarJogo, 90);
 
 
