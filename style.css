@@ -23,6 +23,7 @@ H1 {
 .perdeu {
     color: rgb(17, 0, 32);
     font-weight: bold;
+    width: 500px;
     font-size: 60px;
     position: fixed;
     margin-top: 50px;

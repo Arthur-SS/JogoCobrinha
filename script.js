@@ -10,8 +10,9 @@ let direcao = "direita";
 let comida = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box,
-}
-var fome = { x: -2, y: -2 }
+};
+var fome = { x: -2, y: -2 };
+
 /* let fome = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box,
@@ -20,7 +21,7 @@ var fome = { x: -2, y: -2 }
 let score = document.getElementById("pontos");
 var ponto = 0;
 score.innerHTML = ponto;
-let disparaFome = 100;
+let disparaFome = 20;
 
 
 function criarBG() {
@@ -89,6 +90,8 @@ function desenharFome() {
     context.lineWidth = 3;
     context.strokeRect(fome.x, fome.y, box, box)
 }
+var xyAleatorio = Math.floor(Math.random() * 15 + 1) * box;
+
 
 function iniciarJogo() {
 
@@ -125,11 +128,11 @@ function iniciarJogo() {
         calcularPontos();
     };
 
-
+    /*  Controle Fome  */
     switch (ponto) {
         case disparaFome:
-            fome.x = 7 * box;
-            fome.y = 7 * box;
+            fome.x = xyAleatorio;
+            fome.y = xyAleatorio;
             break;
         default:
             break;
