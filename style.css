@@ -76,6 +76,9 @@ H1 {
 .divid{
     width: 80px;
 }
+.imagens{
+    display: none;
+}
 
 @media (max-width: 1000px) {
     body {

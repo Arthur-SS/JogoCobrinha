@@ -13,15 +13,16 @@ let comida = {
 };
 var fome = { x: -2, y: -2 };
 
-/* let fome = {
-    x: Math.floor(Math.random() * 15 + 1) * box,
-    y: Math.floor(Math.random() * 15 + 1) * box,
-} */
+const imgMaca = document.getElementById("maca")
+var corpoCobra = document.getElementById("corpoCobra")
+const cabecaCobra = document.getElementById("cabecaCobra")
+const ossos = document.getElementById("morreCobra")
+const imgFome = document.getElementById("fome-10")
 
 let score = document.getElementById("pontos");
 var ponto = 0;
 score.innerHTML = ponto;
-let disparaFome = 20;
+let disparaFome = 100;
 
 
 function criarBG() {
@@ -30,11 +31,12 @@ function criarBG() {
 };
 
 function criarCobrinha() {
-    for (i = 0; i < snake.length; i++) {
-        context.fillStyle = "red"
-        context.fillRect(snake[i].x, snake[i].y, box, box)
+    context.drawImage(cabecaCobra, snake[0].x, snake[0].y)
+    for (i = 1; i < snake.length; i++) {
+        context.drawImage(corpoCobra, snake[i].x, snake[i].y);
     }
 };
+
 function loop() {
     if (snake[0].x >= 16 * box) snake[0].x = 0;
     if (snake[0].x <= -1) snake[0].x = 16 * box;
@@ -71,8 +73,7 @@ function botaoEsquerda() {
 
 
 function desenharComida() {
-    context.fillStyle = "orange";
-    context.fillRect(comida.x, comida.y, box, box)
+    context.drawImage(imgMaca, comida.x, comida.y);
 }
 
 function calcularPontos() {
@@ -84,11 +85,7 @@ function pontoCai() {
     score.innerHTML = ponto
 }
 function desenharFome() {
-    context.fillStyle = "black";
-    context.fillRect(fome.x, fome.y, box, box)
-    context.strokeStyle = "#CCCCCC";
-    context.lineWidth = 3;
-    context.strokeRect(fome.x, fome.y, box, box)
+    context.drawImage(imgFome, fome.x, fome.y)
 }
 var xyAleatorio = Math.floor(Math.random() * 15 + 1) * box;
 
@@ -97,6 +94,7 @@ function iniciarJogo() {
 
     for (i = 1; i < snake.length; i++) {
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+            corpoCobra = ossos
             var perdeu = document.querySelector(".perdeu");
             perdeu.style.display = "flex";
             let textHTML = ""
