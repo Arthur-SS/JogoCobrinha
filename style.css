@@ -50,7 +50,7 @@ H1 {
 }
 
 .container {
-    display: none;
+    display: block;
     position: fixed;
     margin-top: 80vh;
 }
