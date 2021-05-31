@@ -80,6 +80,17 @@ H1 {
     display: none;
 }
 
+.btaJogar{
+    z-index: 1001;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    background-color: rgb(255, 255, 4);
+    border: 5px solid #000;
+    border-radius: 20px;
+   
+    height: 60px;
+}
+
 @media (max-width: 1000px) {
     body {
         height: 90vh;
