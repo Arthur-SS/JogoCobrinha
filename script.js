@@ -53,6 +53,7 @@ function jogoComeçar() {        //Função para add botão de jogar e reiniciar
     jogando.style.display = "none";
     snake.length = 1
     corpoCobra = document.getElementById("corpoCobra")
+    var fome = { x: -2, y: -2 };
 
     let score = document.getElementById("pontos"); //Pontuação
     var ponto = 0;
@@ -192,6 +193,12 @@ function jogoComeçar() {        //Função para add botão de jogar e reiniciar
         } if (snake.length == 30) {
             clearInterval(jogo);
             jogo = setInterval(iniciarJogo, 100)
+        }if (snake.length == 35) {
+            clearInterval(jogo);
+            jogo = setInterval(iniciarJogo, 80)
+        }if (snake.length == 40) {
+            clearInterval(jogo);
+            jogo = setInterval(iniciarJogo, 75)
         };
 
     };
