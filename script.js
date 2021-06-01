@@ -93,7 +93,7 @@ function jogoComeçar() {        //Função para add botão de jogar e reiniciar
     }
     function pontoCai() {
         ponto = ponto - 10
-        score.innerHTML = ponto
+        score.innerHTML = textP + ponto
     }
     function desenharFome() {
         context.drawImage(imgFome, fome.x, fome.y)
